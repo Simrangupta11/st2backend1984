@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style>
+        body {
+    background-color: skyblue;
+    border: 10px rgb(10, 10, 10);
+    padding: 50px;
+    margin: 20px;
+}
+
+#heading {
+    text-decoration: underline;
+    width: 200px;
+    text-align: center;
+}
+
+#btn1 {
+    background-color: sandybrown;
+    width: 120px;
+    height: 30px;
+    cursor: pointer;
+}
+
+#btn2 {
+    background-color: lightslategray;
+    cursor: pointer;
+}
+
+input {
+    width: 200px;
+}
+
+#additems {
+    visibility: hidden;
+}
+
+#column-down {
+    background-color: mediumpurple;
+}
+    </style>
+</head>
+
+<body>
+<p id="heading">Details Form</p>
+<table>
+    <tr>
+        <td>Name:</td>
+        <td><input type="text" id="name"></td>
+    </tr>
+    <tr>
+        <td>Mob. No.:</td>
+        <td><input type="number" id="numb"></td>
+    </tr>
+    <tr>
+        <td>Email ID:</td>
+        <td><input type="email" id="email"></td>
+    </tr>
+    <tr>
+        <td>
+        </td>
+        <td><button type="submit" onclick="additem()" id="btn1">SUBMIT</button></td>
+    </tr>
+</table>
+<hr>
+<div>
+    <input type="text" id="text4"><button id="search" onclick="search()">search</button>
+</div>
+<div>
+    <table id="additems">
+        <tr>
+            <td id="names1">Name</td>
+            <td>Mob No.</td>
+            <td>Email Id.</td>
+        </tr>
+    </table>
+</div>
+<script>
+function additem() {
+    var count = 0;
+    var name = document.getElementById("name").value;
+    var numb = document.getElementById("numb").value;
+    var email = document.getElementById("email").value;
+    var reg = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$";
+    var additem = document.getElementById("additems");
+    additem.style.visibility = "visible";
+    if (name === "" && numb === "" && email === "") {
+        alert("Nothing should be empty");
+    } else if (numb.length != 10) {
+        alert("Length of number should be 10");
+    } else if (name.length < 3) {
+        alert("Name length should be minimum 3");
+    } else if (!email.match(reg)) {
+        alert("Invalid email");
+    } else {
+        additem.innerHTML += "<tr><td id=\"column-down\">" + name + "</td><td id=\"column-down\">" + numb + "</td><td id=\"column-down\">" + email + "</td><td><button onclick=\"abc()\" id=\"btn2\">Delete</button></td></tr></table>";
+    }
+}
+
+function abc() {
+    document.getElementById("additems").deleteRow(1);
+}
+function search(){
+var s=document.getElementById("text4").value;
+var p=document.getElementById("names1").value;
+if(names1.equals(p)){
+document.getElementById("additems").innerHTML="<tr><td id=\"column-down\">" + p + "</td>";
+}
+else{
+alert("no item found");
+}
+
+}
+</script>
+</body>
+
+</html>
